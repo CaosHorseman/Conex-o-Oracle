@@ -1,0 +1,29 @@
+#EXPLORADOR DE ARQUIVOS
+import os
+import platform
+
+LOCATION = r"C:\\app\\product\\instantclient_19_17"
+print("ARCH:", platform.architecture())
+print("FILES AT LOCATION:")
+for name in os.listdir(LOCATION):
+    print(name)
+os.environ["PATH"] = LOCATION + ";" + os.environ["PATH"] #LOCAL DO INSTANT CLIENT ORACLE 64bits
+
+#Forma da Conexão por SQL ALCHEMY 
+from sqlalchemy.engine import create_engine
+
+DIALECT = 'oracle'
+SQL_DRIVER = 'cx_oracle'
+USERNAME = 'EXC_CONS_LOG' #enter your username
+PASSWORD = 'GOL5%SNOC6!CXE' #enter your password
+HOST = '172.20.0.19' #enter the oracle db host url
+PORT = 1521 # enter the oracle port number
+SERVICE = 'oracorp' # enter the oracle db service name
+ENGINE_PATH_WIN_AUTH = DIALECT + '+' + SQL_DRIVER + '://' + USERNAME + ':' + PASSWORD +'@' + HOST + ':' + str(PORT) + '/?service_name=' + SERVICE
+
+engine = create_engine(ENGINE_PATH_WIN_AUTH)
+
+#test query
+import pandas as pd
+test_df = pd.read_sql_query(
+"""select * from wms_app_hist.dlytrn""", engine)
