@@ -14,10 +14,10 @@ from sqlalchemy.engine import create_engine
 
 DIALECT = 'oracle'
 SQL_DRIVER = 'cx_oracle'
-USERNAME = 'EXC_CONS_LOG' #enter your username
-PASSWORD = 'GOL5%SNOC6!CXE' #enter your password
-HOST = '172.20.0.19' #enter the oracle db host url
-PORT = 1521 # enter the oracle port number
+USERNAME = '' #enter your username
+PASSWORD = '' #enter your password
+HOST = '' #enter the oracle db host url
+PORT =  # enter the oracle port number
 SERVICE = 'oracorp' # enter the oracle db service name
 ENGINE_PATH_WIN_AUTH = DIALECT + '+' + SQL_DRIVER + '://' + USERNAME + ':' + PASSWORD +'@' + HOST + ':' + str(PORT) + '/?service_name=' + SERVICE
 
